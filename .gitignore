@@ -1,0 +1,25 @@
+# Generated Data
+data/
+*.json
+
+# Solr Binaries and Data
+solr-dist/
+solr-*.tgz
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+*.egg-info/
+
+# Spark/Java
+*.jar
+metastore_db/
+derby.log
+
+# IDEs
+.idea/
+.vscode/
+.DS_Store

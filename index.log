@@ -1,0 +1,621 @@
+spark-submit --packages com.lucidworks.spark:spark-solr:4.0.0 spark_job/index_to_solr.py
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+25/11/20 18:27:12 WARN Utils: Your hostname, Sid-Home-MBP.local, resolves to a loopback address: 127.0.0.1; using 10.4.27.203 instead (on interface en0)
+25/11/20 18:27:12 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+:: loading settings :: url = jar:file:/Users/r39132/.pyenv/versions/3.12.3/lib/python3.12/site-packages/pyspark/jars/ivy-2.5.3.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Ivy Default Cache set to: /Users/r39132/.ivy2.5.2/cache
+The jars for the packages stored in: /Users/r39132/.ivy2.5.2/jars
+com.lucidworks.spark#spark-solr added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-e8de2311-31d3-4661-b830-b9bd173f5a14;1.0
+	confs: [default]
+	found com.lucidworks.spark#spark-solr;4.0.0 in central
+	found com.esotericsoftware#kryo-shaded;4.0.2 in local-m2-cache
+	found com.esotericsoftware#minlog;1.3.0 in local-m2-cache
+	found org.objenesis#objenesis;2.5.1 in local-m2-cache
+	found org.apache.bahir#spark-streaming-twitter_2.12;2.4.0 in central
+	found org.twitter4j#twitter4j-stream;4.0.6 in central
+	found org.twitter4j#twitter4j-core;4.0.6 in central
+	found org.spark-project.spark#unused;1.0.0 in local-m2-cache
+	found commons-cli#commons-cli;1.4 in local-m2-cache
+	found commons-io#commons-io;2.8.0 in local-m2-cache
+	found org.apache.solr#solr-solrj;8.9.0 in central
+	found commons-lang#commons-lang;2.6 in local-m2-cache
+	found io.netty#netty-buffer;4.1.50.Final in central
+	found io.netty#netty-codec;4.1.50.Final in central
+	found io.netty#netty-common;4.1.50.Final in central
+	found io.netty#netty-handler;4.1.50.Final in central
+	found io.netty#netty-resolver;4.1.50.Final in central
+	found io.netty#netty-transport;4.1.50.Final in central
+	found io.netty#netty-transport-native-epoll;4.1.50.Final in central
+	found io.netty#netty-transport-native-unix-common;4.1.50.Final in central
+	found org.apache.commons#commons-math3;3.6.1 in local-m2-cache
+	found org.apache.httpcomponents#httpclient;4.5.12 in central
+	found org.apache.httpcomponents#httpcore;4.4.13 in local-m2-cache
+	found org.apache.httpcomponents#httpmime;4.5.12 in central
+	found org.apache.zookeeper#zookeeper;3.6.2 in central
+	found org.apache.zookeeper#zookeeper-jute;3.6.2 in central
+	found org.codehaus.woodstox#stax2-api;3.1.4 in central
+	found org.codehaus.woodstox#woodstox-core-asl;4.4.1 in central
+	found org.eclipse.jetty#jetty-alpn-client;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-alpn-java-client;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-client;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-http;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-io;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-util;9.4.41.v20210516 in central
+	found org.eclipse.jetty.http2#http2-client;9.4.41.v20210516 in central
+	found org.eclipse.jetty.http2#http2-common;9.4.41.v20210516 in central
+	found org.eclipse.jetty.http2#http2-hpack;9.4.41.v20210516 in central
+	found org.eclipse.jetty.http2#http2-http-client-transport;9.4.41.v20210516 in central
+	found org.slf4j#jcl-over-slf4j;1.7.24 in central
+	found org.slf4j#slf4j-api;1.7.24 in central
+	found org.xerial.snappy#snappy-java;1.1.7.6 in central
+	found org.apache.solr#solr-core;8.9.0 in central
+	found org.apache.lucene#lucene-analyzers-common;8.9.0 in central
+	found org.apache.lucene#lucene-analyzers-kuromoji;8.9.0 in central
+	found org.apache.lucene#lucene-analyzers-nori;8.9.0 in central
+	found org.apache.lucene#lucene-analyzers-phonetic;8.9.0 in central
+	found org.apache.lucene#lucene-backward-codecs;8.9.0 in central
+	found org.apache.lucene#lucene-classification;8.9.0 in central
+	found org.apache.lucene#lucene-codecs;8.9.0 in central
+	found org.apache.lucene#lucene-core;8.9.0 in central
+	found org.apache.lucene#lucene-expressions;8.9.0 in central
+	found org.apache.lucene#lucene-grouping;8.9.0 in central
+	found org.apache.lucene#lucene-highlighter;8.9.0 in central
+	found org.apache.lucene#lucene-join;8.9.0 in central
+	found org.apache.lucene#lucene-memory;8.9.0 in central
+	found org.apache.lucene#lucene-misc;8.9.0 in central
+	found org.apache.lucene#lucene-queries;8.9.0 in central
+	found org.apache.lucene#lucene-queryparser;8.9.0 in central
+	found org.apache.lucene#lucene-sandbox;8.9.0 in central
+	found org.apache.lucene#lucene-spatial-extras;8.9.0 in central
+	found org.apache.lucene#lucene-spatial3d;8.9.0 in central
+	found org.apache.lucene#lucene-suggest;8.9.0 in central
+	found com.carrotsearch#hppc;0.8.1 in central
+	found com.fasterxml.jackson.dataformat#jackson-dataformat-smile;2.11.2 in central
+	found com.github.ben-manes.caffeine#caffeine;2.8.4 in central
+	found com.github.zafarkhaja#java-semver;0.9.0 in central
+	found com.google.guava#guava;25.1-jre in central
+	found com.google.protobuf#protobuf-java;3.11.0 in central
+	found com.google.re2j#re2j;1.2 in central
+	found com.jayway.jsonpath#json-path;2.4.0 in local-m2-cache
+	found com.lmax#disruptor;3.4.2 in central
+	found com.tdunning#t-digest;3.1 in central
+	found commons-codec#commons-codec;1.13 in central
+	found commons-collections#commons-collections;3.2.2 in local-m2-cache
+	found io.dropwizard.metrics#metrics-core;4.1.5 in central
+	found io.dropwizard.metrics#metrics-graphite;4.1.5 in central
+	found io.dropwizard.metrics#metrics-jetty9;4.1.5 in central
+	found io.dropwizard.metrics#metrics-jmx;4.1.5 in central
+	found io.dropwizard.metrics#metrics-jvm;4.1.5 in central
+	found io.opentracing#opentracing-api;0.33.0 in local-m2-cache
+	found io.opentracing#opentracing-noop;0.33.0 in local-m2-cache
+	found io.opentracing#opentracing-util;0.33.0 in local-m2-cache
+	found io.sgr#s2-geometry-library-java;1.0.0 in central
+	found javax.servlet#javax.servlet-api;3.1.0 in local-m2-cache
+	found net.hydromatic#eigenbase-properties;1.1.5 in central
+	found org.apache.calcite#calcite-core;1.18.0 in central
+	found org.apache.calcite#calcite-linq4j;1.18.0 in central
+	found org.apache.calcite.avatica#avatica-core;1.13.0 in central
+	found org.apache.commons#commons-collections4;4.4 in local-m2-cache
+	found org.apache.commons#commons-configuration2;2.1.1 in central
+	found org.apache.commons#commons-exec;1.3 in local-m2-cache
+	found org.apache.commons#commons-lang3;3.10 in local-m2-cache
+	found org.apache.commons#commons-text;1.6 in central
+	found org.apache.curator#curator-client;2.13.0 in central
+	found org.apache.curator#curator-framework;2.13.0 in central
+	found org.apache.curator#curator-recipes;2.13.0 in central
+	found org.apache.htrace#htrace-core4;4.1.0-incubating in central
+	found org.apache.kerby#kerb-core;1.0.1 in central
+	found org.apache.kerby#kerb-util;1.0.1 in central
+	found org.apache.kerby#kerby-asn1;1.0.1 in central
+	found org.apache.kerby#kerby-pkix;1.0.1 in central
+	found org.apache.logging.log4j#log4j-1.2-api;2.13.2 in central
+	found org.apache.logging.log4j#log4j-api;2.13.2 in local-m2-cache
+	found org.apache.logging.log4j#log4j-core;2.13.2 in local-m2-cache
+	found org.apache.logging.log4j#log4j-slf4j-impl;2.13.2 in central
+	found org.apache.logging.log4j#log4j-web;2.13.2 in central
+	found org.bitbucket.b_c#jose4j;0.6.5 in central
+	found org.eclipse.jetty#jetty-alpn-java-server;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-alpn-server;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-continuation;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-deploy;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-jmx;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-rewrite;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-security;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-server;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-servlet;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-servlets;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-webapp;9.4.41.v20210516 in central
+	found org.eclipse.jetty#jetty-xml;9.4.41.v20210516 in central
+	found org.eclipse.jetty.http2#http2-server;9.4.41.v20210516 in central
+	found org.locationtech.spatial4j#spatial4j;0.7 in central
+	found org.ow2.asm#asm;8.0.1 in local-m2-cache
+	found org.ow2.asm#asm-commons;8.0.1 in central
+	found org.rrd4j#rrd4j;3.5 in central
+	found org.apache.hadoop#hadoop-client;3.2.2 in central
+	found org.apache.hadoop#hadoop-common;3.2.2 in central
+	found org.apache.hadoop#hadoop-annotations;3.2.2 in central
+	found com.google.guava#guava;27.0-jre in central
+	found com.google.guava#failureaccess;1.0 in central
+	found com.google.guava#listenablefuture;9999.0-empty-to-avoid-conflict-with-guava in local-m2-cache
+	found com.google.code.findbugs#jsr305;3.0.2 in local-m2-cache
+	found org.checkerframework#checker-qual;2.5.2 in local-m2-cache
+	found com.google.errorprone#error_prone_annotations;2.2.0 in local-m2-cache
+	found com.google.j2objc#j2objc-annotations;1.1 in local-m2-cache
+	found org.codehaus.mojo#animal-sniffer-annotations;1.17 in local-m2-cache
+	found org.apache.httpcomponents#httpclient;4.5.13 in local-m2-cache
+	found commons-logging#commons-logging;1.1.3 in local-m2-cache
+	found commons-net#commons-net;3.6 in central
+	found com.sun.jersey#jersey-core;1.19 in central
+	found javax.ws.rs#jsr311-api;1.1.1 in local-m2-cache
+	found com.sun.jersey#jersey-servlet;1.19 in central
+	found com.sun.jersey#jersey-server;1.19 in central
+	found com.sun.jersey#jersey-json;1.19 in central
+	found org.codehaus.jettison#jettison;1.1 in local-m2-cache
+	found com.sun.xml.bind#jaxb-impl;2.2.3-1 in local-m2-cache
+	found javax.xml.bind#jaxb-api;2.2.11 in central
+	found org.codehaus.jackson#jackson-core-asl;1.9.13 in local-m2-cache
+	found org.codehaus.jackson#jackson-mapper-asl;1.9.13 in local-m2-cache
+	found org.codehaus.jackson#jackson-jaxrs;1.9.13 in local-m2-cache
+	found org.codehaus.jackson#jackson-xc;1.9.13 in local-m2-cache
+	found log4j#log4j;1.2.17 in local-m2-cache
+	found commons-beanutils#commons-beanutils;1.9.4 in local-m2-cache
+	found org.slf4j#slf4j-api;1.7.25 in local-m2-cache
+	found org.apache.avro#avro;1.7.7 in central
+	found com.thoughtworks.paranamer#paranamer;2.3 in local-m2-cache
+	found com.google.code.gson#gson;2.2.4 in central
+	found org.apache.hadoop#hadoop-auth;3.2.2 in central
+	found com.nimbusds#nimbus-jose-jwt;7.9 in local-m2-cache
+	found com.github.stephenc.jcip#jcip-annotations;1.0-1 in local-m2-cache
+	found net.minidev#json-smart;2.3 in local-m2-cache
+	found net.minidev#accessors-smart;1.2 in local-m2-cache
+	found org.apache.kerby#kerb-simplekdc;1.0.1 in central
+	found org.apache.kerby#kerb-client;1.0.1 in central
+	found org.apache.kerby#kerby-config;1.0.1 in central
+	found org.apache.kerby#kerb-common;1.0.1 in central
+	found org.apache.kerby#kerb-crypto;1.0.1 in central
+	found org.apache.kerby#kerby-util;1.0.1 in central
+	found org.apache.kerby#token-provider;1.0.1 in central
+	found org.apache.kerby#kerb-admin;1.0.1 in central
+	found org.apache.kerby#kerb-server;1.0.1 in central
+	found org.apache.kerby#kerb-identity;1.0.1 in central
+	found org.apache.kerby#kerby-xdr;1.0.1 in central
+	found com.jcraft#jsch;0.1.55 in local-m2-cache
+	found com.fasterxml.woodstox#woodstox-core;5.0.3 in central
+	found dnsjava#dnsjava;2.1.7 in central
+	found javax.activation#javax.activation-api;1.2.0 in local-m2-cache
+	found javax.servlet.jsp#jsp-api;2.1 in central
+	found org.apache.hadoop#hadoop-hdfs-client;3.2.2 in central
+	found com.squareup.okhttp#okhttp;2.7.5 in central
+	found com.squareup.okio#okio;1.6.0 in local-m2-cache
+	found org.apache.hadoop#hadoop-yarn-api;3.2.2 in central
+	found org.apache.hadoop#hadoop-yarn-client;3.2.2 in central
+	found org.apache.hadoop#hadoop-mapreduce-client-core;3.2.2 in central
+	found org.apache.hadoop#hadoop-yarn-common;3.2.2 in central
+	found com.sun.jersey#jersey-client;1.19 in central
+	found com.fasterxml.jackson.module#jackson-module-jaxb-annotations;2.9.10 in central
+	found com.fasterxml.jackson.jaxrs#jackson-jaxrs-json-provider;2.9.10 in central
+	found com.fasterxml.jackson.jaxrs#jackson-jaxrs-base;2.9.10 in central
+	found org.apache.hadoop#hadoop-mapreduce-client-jobclient;3.2.2 in central
+	found org.apache.hadoop#hadoop-mapreduce-client-common;3.2.2 in central
+	found com.google.inject#guice;4.0 in local-m2-cache
+	found javax.inject#javax.inject;1 in local-m2-cache
+	found aopalliance#aopalliance;1.0 in local-m2-cache
+	found com.sun.jersey.contribs#jersey-guice;1.19 in central
+	found com.fasterxml.jackson.core#jackson-core;2.12.3 in central
+	found com.fasterxml.jackson.core#jackson-databind;2.12.3 in central
+	found com.fasterxml.jackson.core#jackson-annotations;2.12.3 in central
+	found com.fasterxml.jackson.module#jackson-module-scala_2.12;2.12.3 in central
+	found com.thoughtworks.paranamer#paranamer;2.8 in local-m2-cache
+	found org.apache.spark#spark-hive_2.12;3.1.2 in central
+	found org.apache.hive#hive-common;2.3.7 in central
+	found jline#jline;2.14.6 in central
+	found joda-time#joda-time;2.10.5 in central
+	found com.tdunning#json;1.8 in central
+	found io.dropwizard.metrics#metrics-json;4.1.1 in central
+	found com.github.joshelser#dropwizard-metrics-hadoop-metrics2-reporter;0.1.2 in central
+	found org.apache.hive#hive-exec;2.3.7 in central
+	found org.apache.hive#hive-vector-code-gen;2.3.7 in central
+	found org.apache.velocity#velocity;1.5 in local-m2-cache
+	found oro#oro;2.0.8 in local-m2-cache
+	found org.antlr#antlr-runtime;3.5.2 in central
+	found org.antlr#ST4;4.0.4 in central
+	found org.apache.ivy#ivy;2.4.0 in local-m2-cache
+	found org.datanucleus#datanucleus-core;4.1.17 in central
+	found stax#stax-api;1.0.1 in local-m2-cache
+	found org.apache.hive#hive-metastore;2.3.7 in central
+	found javolution#javolution;5.5.1 in central
+	found com.jolbox#bonecp;0.8.0.RELEASE in central
+	found com.zaxxer#HikariCP;2.5.1 in central
+	found org.apache.derby#derby;10.12.1.1 in central
+	found org.datanucleus#datanucleus-api-jdo;4.2.4 in central
+	found org.datanucleus#datanucleus-rdbms;4.1.19 in central
+	found commons-pool#commons-pool;1.5.4 in central
+	found commons-dbcp#commons-dbcp;1.4 in central
+	found javax.jdo#jdo-api;3.0.1 in central
+	found javax.transaction#jta;1.1 in central
+	found org.datanucleus#javax.jdo;3.2.0-m3 in central
+	found javax.transaction#transaction-api;1.1 in central
+	found org.apache.hive#hive-serde;2.3.7 in central
+	found net.sf.opencsv#opencsv;2.3 in local-m2-cache
+	found org.apache.hive#hive-shims;2.3.7 in central
+	found org.apache.hive.shims#hive-shims-common;2.3.7 in central
+	found org.apache.hive#hive-llap-common;2.3.7 in central
+	found org.apache.hive#hive-llap-client;2.3.7 in central
+	found org.apache.avro#avro;1.8.2 in local-m2-cache
+	found org.xerial.snappy#snappy-java;1.1.8.2 in central
+	found org.tukaani#xz;1.5 in local-m2-cache
+	found org.slf4j#slf4j-api;1.7.30 in local-m2-cache
+	found org.apache.avro#avro-mapred;1.8.2 in local-m2-cache
+	found org.apache.avro#avro-ipc;1.8.2 in local-m2-cache
+	found commons-httpclient#commons-httpclient;3.1 in local-m2-cache
+	found org.jodd#jodd-core;3.5.2 in central
+	found org.apache.thrift#libthrift;0.12.0 in central
+	found org.apache.thrift#libfb303;0.9.3 in central
+	found org.apache.hive.shims#hive-shims-0.23;2.3.7 in central
+	found org.apache.hive.shims#hive-shims-scheduler;2.3.7 in central
+	found org.apache.commons#commons-compress;1.21 in local-m2-cache
+	found org.joda#joda-convert;2.2.1 in central
+downloading file:/Users/r39132/.m2/repository/org/apache/avro/avro/1.8.2/avro-1.8.2.jar ...
+	[SUCCESSFUL ] org.apache.avro#avro;1.8.2!avro.jar (8ms)
+downloading file:/Users/r39132/.m2/repository/org/apache/avro/avro-ipc/1.8.2/avro-ipc-1.8.2.jar ...
+	[SUCCESSFUL ] org.apache.avro#avro-ipc;1.8.2!avro-ipc.jar (3ms)
+:: resolution report :: resolve 5720ms :: artifacts dl 329ms
+	:: modules in use:
+	aopalliance#aopalliance;1.0 from local-m2-cache in [default]
+	com.carrotsearch#hppc;0.8.1 from central in [default]
+	com.esotericsoftware#kryo-shaded;4.0.2 from local-m2-cache in [default]
+	com.esotericsoftware#minlog;1.3.0 from local-m2-cache in [default]
+	com.fasterxml.jackson.core#jackson-annotations;2.12.3 from central in [default]
+	com.fasterxml.jackson.core#jackson-core;2.12.3 from central in [default]
+	com.fasterxml.jackson.core#jackson-databind;2.12.3 from central in [default]
+	com.fasterxml.jackson.dataformat#jackson-dataformat-smile;2.11.2 from central in [default]
+	com.fasterxml.jackson.jaxrs#jackson-jaxrs-base;2.9.10 from central in [default]
+	com.fasterxml.jackson.jaxrs#jackson-jaxrs-json-provider;2.9.10 from central in [default]
+	com.fasterxml.jackson.module#jackson-module-jaxb-annotations;2.9.10 from central in [default]
+	com.fasterxml.jackson.module#jackson-module-scala_2.12;2.12.3 from central in [default]
+	com.fasterxml.woodstox#woodstox-core;5.0.3 from central in [default]
+	com.github.ben-manes.caffeine#caffeine;2.8.4 from central in [default]
+	com.github.joshelser#dropwizard-metrics-hadoop-metrics2-reporter;0.1.2 from central in [default]
+	com.github.stephenc.jcip#jcip-annotations;1.0-1 from local-m2-cache in [default]
+	com.github.zafarkhaja#java-semver;0.9.0 from central in [default]
+	com.google.code.findbugs#jsr305;3.0.2 from local-m2-cache in [default]
+	com.google.code.gson#gson;2.2.4 from central in [default]
+	com.google.errorprone#error_prone_annotations;2.2.0 from local-m2-cache in [default]
+	com.google.guava#failureaccess;1.0 from central in [default]
+	com.google.guava#guava;27.0-jre from central in [default]
+	com.google.guava#listenablefuture;9999.0-empty-to-avoid-conflict-with-guava from local-m2-cache in [default]
+	com.google.inject#guice;4.0 from local-m2-cache in [default]
+	com.google.j2objc#j2objc-annotations;1.1 from local-m2-cache in [default]
+	com.google.protobuf#protobuf-java;3.11.0 from central in [default]
+	com.google.re2j#re2j;1.2 from central in [default]
+	com.jayway.jsonpath#json-path;2.4.0 from local-m2-cache in [default]
+	com.jcraft#jsch;0.1.55 from local-m2-cache in [default]
+	com.jolbox#bonecp;0.8.0.RELEASE from central in [default]
+	com.lmax#disruptor;3.4.2 from central in [default]
+	com.lucidworks.spark#spark-solr;4.0.0 from central in [default]
+	com.nimbusds#nimbus-jose-jwt;7.9 from local-m2-cache in [default]
+	com.squareup.okhttp#okhttp;2.7.5 from central in [default]
+	com.squareup.okio#okio;1.6.0 from local-m2-cache in [default]
+	com.sun.jersey#jersey-client;1.19 from central in [default]
+	com.sun.jersey#jersey-core;1.19 from central in [default]
+	com.sun.jersey#jersey-json;1.19 from central in [default]
+	com.sun.jersey#jersey-server;1.19 from central in [default]
+	com.sun.jersey#jersey-servlet;1.19 from central in [default]
+	com.sun.jersey.contribs#jersey-guice;1.19 from central in [default]
+	com.sun.xml.bind#jaxb-impl;2.2.3-1 from local-m2-cache in [default]
+	com.tdunning#json;1.8 from central in [default]
+	com.tdunning#t-digest;3.1 from central in [default]
+	com.thoughtworks.paranamer#paranamer;2.8 from local-m2-cache in [default]
+	com.zaxxer#HikariCP;2.5.1 from central in [default]
+	commons-beanutils#commons-beanutils;1.9.4 from local-m2-cache in [default]
+	commons-cli#commons-cli;1.4 from local-m2-cache in [default]
+	commons-codec#commons-codec;1.13 from central in [default]
+	commons-collections#commons-collections;3.2.2 from local-m2-cache in [default]
+	commons-dbcp#commons-dbcp;1.4 from central in [default]
+	commons-httpclient#commons-httpclient;3.1 from local-m2-cache in [default]
+	commons-io#commons-io;2.8.0 from local-m2-cache in [default]
+	commons-lang#commons-lang;2.6 from local-m2-cache in [default]
+	commons-logging#commons-logging;1.1.3 from local-m2-cache in [default]
+	commons-net#commons-net;3.6 from central in [default]
+	commons-pool#commons-pool;1.5.4 from central in [default]
+	dnsjava#dnsjava;2.1.7 from central in [default]
+	io.dropwizard.metrics#metrics-core;4.1.5 from central in [default]
+	io.dropwizard.metrics#metrics-graphite;4.1.5 from central in [default]
+	io.dropwizard.metrics#metrics-jetty9;4.1.5 from central in [default]
+	io.dropwizard.metrics#metrics-jmx;4.1.5 from central in [default]
+	io.dropwizard.metrics#metrics-json;4.1.1 from central in [default]
+	io.dropwizard.metrics#metrics-jvm;4.1.5 from central in [default]
+	io.netty#netty-buffer;4.1.50.Final from central in [default]
+	io.netty#netty-codec;4.1.50.Final from central in [default]
+	io.netty#netty-common;4.1.50.Final from central in [default]
+	io.netty#netty-handler;4.1.50.Final from central in [default]
+	io.netty#netty-resolver;4.1.50.Final from central in [default]
+	io.netty#netty-transport;4.1.50.Final from central in [default]
+	io.netty#netty-transport-native-epoll;4.1.50.Final from central in [default]
+	io.netty#netty-transport-native-unix-common;4.1.50.Final from central in [default]
+	io.opentracing#opentracing-api;0.33.0 from local-m2-cache in [default]
+	io.opentracing#opentracing-noop;0.33.0 from local-m2-cache in [default]
+	io.opentracing#opentracing-util;0.33.0 from local-m2-cache in [default]
+	io.sgr#s2-geometry-library-java;1.0.0 from central in [default]
+	javax.activation#javax.activation-api;1.2.0 from local-m2-cache in [default]
+	javax.inject#javax.inject;1 from local-m2-cache in [default]
+	javax.jdo#jdo-api;3.0.1 from central in [default]
+	javax.servlet#javax.servlet-api;3.1.0 from local-m2-cache in [default]
+	javax.servlet.jsp#jsp-api;2.1 from central in [default]
+	javax.transaction#jta;1.1 from central in [default]
+	javax.transaction#transaction-api;1.1 from central in [default]
+	javax.ws.rs#jsr311-api;1.1.1 from local-m2-cache in [default]
+	javax.xml.bind#jaxb-api;2.2.11 from central in [default]
+	javolution#javolution;5.5.1 from central in [default]
+	jline#jline;2.14.6 from central in [default]
+	joda-time#joda-time;2.10.5 from central in [default]
+	log4j#log4j;1.2.17 from local-m2-cache in [default]
+	net.hydromatic#eigenbase-properties;1.1.5 from central in [default]
+	net.minidev#accessors-smart;1.2 from local-m2-cache in [default]
+	net.minidev#json-smart;2.3 from local-m2-cache in [default]
+	net.sf.opencsv#opencsv;2.3 from local-m2-cache in [default]
+	org.antlr#ST4;4.0.4 from central in [default]
+	org.antlr#antlr-runtime;3.5.2 from central in [default]
+	org.apache.avro#avro;1.8.2 from local-m2-cache in [default]
+	org.apache.avro#avro-ipc;1.8.2 from local-m2-cache in [default]
+	org.apache.avro#avro-mapred;1.8.2 from local-m2-cache in [default]
+	org.apache.bahir#spark-streaming-twitter_2.12;2.4.0 from central in [default]
+	org.apache.calcite#calcite-core;1.18.0 from central in [default]
+	org.apache.calcite#calcite-linq4j;1.18.0 from central in [default]
+	org.apache.calcite.avatica#avatica-core;1.13.0 from central in [default]
+	org.apache.commons#commons-collections4;4.4 from local-m2-cache in [default]
+	org.apache.commons#commons-compress;1.21 from local-m2-cache in [default]
+	org.apache.commons#commons-configuration2;2.1.1 from central in [default]
+	org.apache.commons#commons-exec;1.3 from local-m2-cache in [default]
+	org.apache.commons#commons-lang3;3.10 from local-m2-cache in [default]
+	org.apache.commons#commons-math3;3.6.1 from local-m2-cache in [default]
+	org.apache.commons#commons-text;1.6 from central in [default]
+	org.apache.curator#curator-client;2.13.0 from central in [default]
+	org.apache.curator#curator-framework;2.13.0 from central in [default]
+	org.apache.curator#curator-recipes;2.13.0 from central in [default]
+	org.apache.derby#derby;10.12.1.1 from central in [default]
+	org.apache.hadoop#hadoop-annotations;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-auth;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-client;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-common;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-hdfs-client;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-mapreduce-client-common;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-mapreduce-client-core;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-mapreduce-client-jobclient;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-yarn-api;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-yarn-client;3.2.2 from central in [default]
+	org.apache.hadoop#hadoop-yarn-common;3.2.2 from central in [default]
+	org.apache.hive#hive-common;2.3.7 from central in [default]
+	org.apache.hive#hive-exec;2.3.7 from central in [default]
+	org.apache.hive#hive-llap-client;2.3.7 from central in [default]
+	org.apache.hive#hive-llap-common;2.3.7 from central in [default]
+	org.apache.hive#hive-metastore;2.3.7 from central in [default]
+	org.apache.hive#hive-serde;2.3.7 from central in [default]
+	org.apache.hive#hive-shims;2.3.7 from central in [default]
+	org.apache.hive#hive-vector-code-gen;2.3.7 from central in [default]
+	org.apache.hive.shims#hive-shims-0.23;2.3.7 from central in [default]
+	org.apache.hive.shims#hive-shims-common;2.3.7 from central in [default]
+	org.apache.hive.shims#hive-shims-scheduler;2.3.7 from central in [default]
+	org.apache.htrace#htrace-core4;4.1.0-incubating from central in [default]
+	org.apache.httpcomponents#httpclient;4.5.13 from local-m2-cache in [default]
+	org.apache.httpcomponents#httpcore;4.4.13 from local-m2-cache in [default]
+	org.apache.httpcomponents#httpmime;4.5.12 from central in [default]
+	org.apache.ivy#ivy;2.4.0 from local-m2-cache in [default]
+	org.apache.kerby#kerb-admin;1.0.1 from central in [default]
+	org.apache.kerby#kerb-client;1.0.1 from central in [default]
+	org.apache.kerby#kerb-common;1.0.1 from central in [default]
+	org.apache.kerby#kerb-core;1.0.1 from central in [default]
+	org.apache.kerby#kerb-crypto;1.0.1 from central in [default]
+	org.apache.kerby#kerb-identity;1.0.1 from central in [default]
+	org.apache.kerby#kerb-server;1.0.1 from central in [default]
+	org.apache.kerby#kerb-simplekdc;1.0.1 from central in [default]
+	org.apache.kerby#kerb-util;1.0.1 from central in [default]
+	org.apache.kerby#kerby-asn1;1.0.1 from central in [default]
+	org.apache.kerby#kerby-config;1.0.1 from central in [default]
+	org.apache.kerby#kerby-pkix;1.0.1 from central in [default]
+	org.apache.kerby#kerby-util;1.0.1 from central in [default]
+	org.apache.kerby#kerby-xdr;1.0.1 from central in [default]
+	org.apache.kerby#token-provider;1.0.1 from central in [default]
+	org.apache.logging.log4j#log4j-1.2-api;2.13.2 from central in [default]
+	org.apache.logging.log4j#log4j-api;2.13.2 from local-m2-cache in [default]
+	org.apache.logging.log4j#log4j-core;2.13.2 from local-m2-cache in [default]
+	org.apache.logging.log4j#log4j-slf4j-impl;2.13.2 from central in [default]
+	org.apache.logging.log4j#log4j-web;2.13.2 from central in [default]
+	org.apache.lucene#lucene-analyzers-common;8.9.0 from central in [default]
+	org.apache.lucene#lucene-analyzers-kuromoji;8.9.0 from central in [default]
+	org.apache.lucene#lucene-analyzers-nori;8.9.0 from central in [default]
+	org.apache.lucene#lucene-analyzers-phonetic;8.9.0 from central in [default]
+	org.apache.lucene#lucene-backward-codecs;8.9.0 from central in [default]
+	org.apache.lucene#lucene-classification;8.9.0 from central in [default]
+	org.apache.lucene#lucene-codecs;8.9.0 from central in [default]
+	org.apache.lucene#lucene-core;8.9.0 from central in [default]
+	org.apache.lucene#lucene-expressions;8.9.0 from central in [default]
+	org.apache.lucene#lucene-grouping;8.9.0 from central in [default]
+	org.apache.lucene#lucene-highlighter;8.9.0 from central in [default]
+	org.apache.lucene#lucene-join;8.9.0 from central in [default]
+	org.apache.lucene#lucene-memory;8.9.0 from central in [default]
+	org.apache.lucene#lucene-misc;8.9.0 from central in [default]
+	org.apache.lucene#lucene-queries;8.9.0 from central in [default]
+	org.apache.lucene#lucene-queryparser;8.9.0 from central in [default]
+	org.apache.lucene#lucene-sandbox;8.9.0 from central in [default]
+	org.apache.lucene#lucene-spatial-extras;8.9.0 from central in [default]
+	org.apache.lucene#lucene-spatial3d;8.9.0 from central in [default]
+	org.apache.lucene#lucene-suggest;8.9.0 from central in [default]
+	org.apache.solr#solr-core;8.9.0 from central in [default]
+	org.apache.solr#solr-solrj;8.9.0 from central in [default]
+	org.apache.spark#spark-hive_2.12;3.1.2 from central in [default]
+	org.apache.thrift#libfb303;0.9.3 from central in [default]
+	org.apache.thrift#libthrift;0.12.0 from central in [default]
+	org.apache.velocity#velocity;1.5 from local-m2-cache in [default]
+	org.apache.zookeeper#zookeeper;3.6.2 from central in [default]
+	org.apache.zookeeper#zookeeper-jute;3.6.2 from central in [default]
+	org.bitbucket.b_c#jose4j;0.6.5 from central in [default]
+	org.checkerframework#checker-qual;2.5.2 from local-m2-cache in [default]
+	org.codehaus.jackson#jackson-core-asl;1.9.13 from local-m2-cache in [default]
+	org.codehaus.jackson#jackson-jaxrs;1.9.13 from local-m2-cache in [default]
+	org.codehaus.jackson#jackson-mapper-asl;1.9.13 from local-m2-cache in [default]
+	org.codehaus.jackson#jackson-xc;1.9.13 from local-m2-cache in [default]
+	org.codehaus.jettison#jettison;1.1 from local-m2-cache in [default]
+	org.codehaus.mojo#animal-sniffer-annotations;1.17 from local-m2-cache in [default]
+	org.codehaus.woodstox#stax2-api;3.1.4 from central in [default]
+	org.codehaus.woodstox#woodstox-core-asl;4.4.1 from central in [default]
+	org.datanucleus#datanucleus-api-jdo;4.2.4 from central in [default]
+	org.datanucleus#datanucleus-core;4.1.17 from central in [default]
+	org.datanucleus#datanucleus-rdbms;4.1.19 from central in [default]
+	org.datanucleus#javax.jdo;3.2.0-m3 from central in [default]
+	org.eclipse.jetty#jetty-alpn-client;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-alpn-java-client;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-alpn-java-server;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-alpn-server;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-client;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-continuation;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-deploy;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-http;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-io;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-jmx;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-rewrite;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-security;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-server;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-servlet;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-servlets;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-util;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-webapp;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty#jetty-xml;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty.http2#http2-client;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty.http2#http2-common;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty.http2#http2-hpack;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty.http2#http2-http-client-transport;9.4.41.v20210516 from central in [default]
+	org.eclipse.jetty.http2#http2-server;9.4.41.v20210516 from central in [default]
+	org.joda#joda-convert;2.2.1 from central in [default]
+	org.jodd#jodd-core;3.5.2 from central in [default]
+	org.locationtech.spatial4j#spatial4j;0.7 from central in [default]
+	org.objenesis#objenesis;2.5.1 from local-m2-cache in [default]
+	org.ow2.asm#asm;8.0.1 from local-m2-cache in [default]
+	org.ow2.asm#asm-commons;8.0.1 from central in [default]
+	org.rrd4j#rrd4j;3.5 from central in [default]
+	org.slf4j#jcl-over-slf4j;1.7.24 from central in [default]
+	org.slf4j#slf4j-api;1.7.30 from local-m2-cache in [default]
+	org.spark-project.spark#unused;1.0.0 from local-m2-cache in [default]
+	org.tukaani#xz;1.5 from local-m2-cache in [default]
+	org.twitter4j#twitter4j-core;4.0.6 from central in [default]
+	org.twitter4j#twitter4j-stream;4.0.6 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.8.2 from central in [default]
+	oro#oro;2.0.8 from local-m2-cache in [default]
+	stax#stax-api;1.0.1 from local-m2-cache in [default]
+	:: evicted modules:
+	org.apache.httpcomponents#httpclient;4.5.12 by [org.apache.httpcomponents#httpclient;4.5.13] in [default]
+	org.slf4j#slf4j-api;1.7.24 by [org.slf4j#slf4j-api;1.7.25] in [default]
+	org.xerial.snappy#snappy-java;1.1.7.6 by [org.xerial.snappy#snappy-java;1.1.8.2] in [default]
+	com.fasterxml.jackson.core#jackson-annotations;2.11.2 by [com.fasterxml.jackson.core#jackson-annotations;2.12.3] in [default]
+	com.fasterxml.jackson.core#jackson-core;2.11.2 by [com.fasterxml.jackson.core#jackson-core;2.12.3] in [default]
+	com.fasterxml.jackson.core#jackson-databind;2.11.2 by [com.fasterxml.jackson.core#jackson-databind;2.12.3] in [default]
+	com.google.guava#guava;25.1-jre by [com.google.guava#guava;27.0-jre] in [default]
+	org.apache.hadoop#hadoop-common;3.2.0 by [org.apache.hadoop#hadoop-common;3.2.2] in [default]
+	commons-cli#commons-cli;1.2 by [commons-cli#commons-cli;1.4] in [default]
+	org.apache.commons#commons-math3;3.1.1 by [org.apache.commons#commons-math3;3.6.1] in [default]
+	commons-codec#commons-codec;1.11 by [commons-codec#commons-codec;1.13] in [default]
+	commons-io#commons-io;2.5 by [commons-io#commons-io;2.8.0] in [default]
+	org.eclipse.jetty#jetty-server;9.4.20.v20190813 by [org.eclipse.jetty#jetty-server;9.4.41.v20210516] in [default]
+	org.eclipse.jetty#jetty-util;9.4.20.v20190813 by [org.eclipse.jetty#jetty-util;9.4.41.v20210516] in [default]
+	org.eclipse.jetty#jetty-servlet;9.4.20.v20190813 by [org.eclipse.jetty#jetty-servlet;9.4.41.v20210516] in [default]
+	org.eclipse.jetty#jetty-webapp;9.4.20.v20190813 by [org.eclipse.jetty#jetty-webapp;9.4.41.v20210516] in [default]
+	org.apache.commons#commons-lang3;3.7 by [org.apache.commons#commons-lang3;3.10] in [default]
+	org.apache.commons#commons-text;1.4 by [org.apache.commons#commons-text;1.6] in [default]
+	org.slf4j#slf4j-api;1.7.25 by [org.slf4j#slf4j-api;1.7.30] in [default]
+	org.apache.avro#avro;1.7.7 by [org.apache.avro#avro;1.8.2] in [default]
+	com.thoughtworks.paranamer#paranamer;2.3 by [com.thoughtworks.paranamer#paranamer;2.8] in [default]
+	org.xerial.snappy#snappy-java;1.0.5 by [org.xerial.snappy#snappy-java;1.1.7.6] in [default]
+	org.apache.commons#commons-compress;1.19 by [org.apache.commons#commons-compress;1.21] in [default]
+	com.google.re2j#re2j;1.1 by [com.google.re2j#re2j;1.2] in [default]
+	com.google.protobuf#protobuf-java;2.5.0 by [com.google.protobuf#protobuf-java;3.11.0] in [default]
+	org.ow2.asm#asm;5.0.4 by [org.ow2.asm#asm;8.0.1] in [default]
+	org.apache.zookeeper#zookeeper;3.4.13 by [org.apache.zookeeper#zookeeper;3.6.2] in [default]
+	com.fasterxml.jackson.core#jackson-databind;2.9.10.4 by [com.fasterxml.jackson.core#jackson-databind;2.12.3] in [default]
+	com.fasterxml.jackson.core#jackson-annotations;2.9.10 by [com.fasterxml.jackson.core#jackson-annotations;2.12.3] in [default]
+	com.fasterxml.jackson.core#jackson-core;2.9.10 by [com.fasterxml.jackson.core#jackson-core;2.12.3] in [default]
+	org.apache.commons#commons-compress;1.20 by [org.apache.commons#commons-compress;1.21] in [default]
+	io.dropwizard.metrics#metrics-core;4.1.1 by [io.dropwizard.metrics#metrics-core;4.1.5] in [default]
+	io.dropwizard.metrics#metrics-jvm;4.1.1 by [io.dropwizard.metrics#metrics-jvm;4.1.5] in [default]
+	com.fasterxml.jackson.core#jackson-databind;2.10.0 by [com.fasterxml.jackson.core#jackson-databind;2.12.3] in [default]
+	org.apache.hadoop#hadoop-common;2.7.2 by [org.apache.hadoop#hadoop-common;3.2.2] in [default]
+	com.google.guava#guava;14.0.1 by [com.google.guava#guava;27.0-jre] in [default]
+	commons-codec#commons-codec;1.10 by [commons-codec#commons-codec;1.13] in [default]
+	org.apache.httpcomponents#httpclient;4.5.6 by [org.apache.httpcomponents#httpclient;4.5.13] in [default]
+	com.google.code.findbugs#jsr305;3.0.0 by [com.google.code.findbugs#jsr305;3.0.2] in [default]
+	org.apache.httpcomponents#httpcore;4.4.12 by [org.apache.httpcomponents#httpcore;4.4.13] in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |  281  |   0   |   0   |   40  ||  241  |   2   |
+	---------------------------------------------------------------------
+
+:: problems summary ::
+:::: WARNINGS
+		[NOT FOUND  ] org.objenesis#objenesis;2.5.1!objenesis.jar (1ms)
+
+	==== local-m2-cache: tried
+
+	  file:/Users/r39132/.m2/repository/org/objenesis/objenesis/2.5.1/objenesis-2.5.1.jar
+
+		[NOT FOUND  ] org.ow2.asm#asm;8.0.1!asm.jar (1ms)
+
+	==== local-m2-cache: tried
+
+	  file:/Users/r39132/.m2/repository/org/ow2/asm/asm/8.0.1/asm-8.0.1.jar
+
+		[NOT FOUND  ] com.jcraft#jsch;0.1.55!jsch.jar (1ms)
+
+	==== local-m2-cache: tried
+
+	  file:/Users/r39132/.m2/repository/com/jcraft/jsch/0.1.55/jsch-0.1.55.jar
+
+		[NOT FOUND  ] com.nimbusds#nimbus-jose-jwt;7.9!nimbus-jose-jwt.jar (0ms)
+
+	==== local-m2-cache: tried
+
+	  file:/Users/r39132/.m2/repository/com/nimbusds/nimbus-jose-jwt/7.9/nimbus-jose-jwt-7.9.jar
+
+		[NOT FOUND  ] com.google.inject#guice;4.0!guice.jar (1ms)
+
+	==== local-m2-cache: tried
+
+	  file:/Users/r39132/.m2/repository/com/google/inject/guice/4.0/guice-4.0.jar
+
+		::::::::::::::::::::::::::::::::::::::::::::::
+
+		::              FAILED DOWNLOADS            ::
+
+		:: ^ see resolution messages for details  ^ ::
+
+		::::::::::::::::::::::::::::::::::::::::::::::
+
+		:: org.objenesis#objenesis;2.5.1!objenesis.jar
+
+		:: org.ow2.asm#asm;8.0.1!asm.jar
+
+		:: com.nimbusds#nimbus-jose-jwt;7.9!nimbus-jose-jwt.jar
+
+		:: com.jcraft#jsch;0.1.55!jsch.jar
+
+		:: com.google.inject#guice;4.0!guice.jar
+
+		::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+:: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS
+Exception in thread "main" java.lang.RuntimeException: [download failed: org.objenesis#objenesis;2.5.1!objenesis.jar, download failed: org.ow2.asm#asm;8.0.1!asm.jar, download failed: com.nimbusds#nimbus-jose-jwt;7.9!nimbus-jose-jwt.jar, download failed: com.jcraft#jsch;0.1.55!jsch.jar, download failed: com.google.inject#guice;4.0!guice.jar]
+	at org.apache.spark.util.MavenUtils$.resolveMavenCoordinates(MavenUtils.scala:540)
+	at org.apache.spark.util.DependencyUtils$.resolveMavenDependencies(DependencyUtils.scala:123)
+	at org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:341)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:961)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:204)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:227)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:96)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1132)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1141)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+make: *** [index] Error 1
