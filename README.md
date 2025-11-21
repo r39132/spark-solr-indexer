@@ -1,4 +1,4 @@
-# Axial Blazar: Solr Data Pipeline
+# Spark Solr Indexer: Solr Data Pipeline
 
 A complete data pipeline project that generates synthetic data, sets up a local Apache Solr instance, and indexes data using Apache Spark.
 
