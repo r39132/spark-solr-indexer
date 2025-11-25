@@ -28,3 +28,4 @@ spark-warehouse/
 .idea/
 .vscode/
 .DS_Store
+.ipynb_checkpoints
