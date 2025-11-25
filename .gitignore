@@ -18,6 +18,11 @@ venv/
 *.jar
 metastore_db/
 derby.log
+spark-warehouse/
+*.log
+
+# Environment Variables
+.env
 
 # IDEs
 .idea/

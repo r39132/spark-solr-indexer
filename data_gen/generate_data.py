@@ -29,9 +29,10 @@ def main():
         documents.append(generate_document(i))
     
     with open(output_file, "w") as f:
-        # Writing line-delimited JSON (often easier for Spark to read efficiently, 
-        # though standard JSON array is also fine. Let's do standard JSON array for simplicity)
-        json.dump(documents, f, indent=2)
+        # Write as JSON Lines (newline-delimited JSON) - one JSON object per line
+        # This is the format Spark's JSON reader expects
+        for doc in documents:
+            f.write(json.dumps(doc) + "\n")
         
     print(f"Successfully generated {len(documents)} documents to {output_file}")
 

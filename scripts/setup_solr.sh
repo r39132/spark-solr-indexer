@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SOLR_VERSION="9.7.0"
+SOLR_VERSION="8.11.3"
 SOLR_DIR="solr-dist"
 SOLR_ZIP="solr-$SOLR_VERSION.tgz"
-SOLR_URL="https://archive.apache.org/dist/solr/solr/$SOLR_VERSION/$SOLR_ZIP"
+SOLR_URL="https://archive.apache.org/dist/lucene/solr/$SOLR_VERSION/$SOLR_ZIP"
 
 mkdir -p $SOLR_DIR
 

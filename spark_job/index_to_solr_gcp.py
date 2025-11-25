@@ -1,30 +1,29 @@
+
 from pyspark.sql import SparkSession
 import os
 
 def main():
-    # Ensure we have the spark-solr package
-    # In a real run, this is passed via --packages to spark-submit
     spark = SparkSession.builder \
-    .appName("SolrIndexer") \
-    .master("local[*]") \
-    .getOrCreate()
+        .appName("SolrIndexer-GCP") \
+        .getOrCreate()
 
-    # Read JSON data
-    input_file = os.path.abspath("data/dummy_data.json")
+    # Read JSON data from GCS
+    input_file = "gs://family-tree-469815-spark-solr-data/data/dummy_data.json"
     print(f"Reading data from {input_file}")
-    
+
     df = spark.read.json(input_file)
-    
+
     print("Schema:")
     df.printSchema()
-    
+
     # Solr configuration
-    zk_host = "localhost:9983" # Default embedded ZK port for Solr cloud -c
+    # Use Internal IP for ZooKeeper (accessible within VPC)
+    zk_host = "10.128.0.2:9983"
     collection = "dummy_data"
-    
-    print(f"Indexing to Solr collection '{collection}' at ZK '{zk_host}'...")
-    
-    # Write to Solr
+
+    print(f"Indexing to Solr collection '{collection}' via ZK '{zk_host}'...")
+
+    # Write to Solr using ZK (standard method)
     df.write.format("solr") \
         .option("zkhost", zk_host) \
         .option("collection", collection) \
@@ -32,7 +31,7 @@ def main():
         .option("commit_within", "1000") \
         .mode("overwrite") \
         .save()
-        
+
     print("Indexing complete.")
     spark.stop()
 
