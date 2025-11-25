@@ -96,6 +96,41 @@ uv run jupyter notebook notebooks/pipeline_gcp.ipynb
 
 
 
+## 🧹 Code Quality
+
+This project uses modern Python tooling for code quality:
+
+- **[Ruff](https://github.com/astral-sh/ruff)** – Ultra-fast linter and formatter
+- **[mypy](https://mypy-lang.org/)** – Static type checker
+- **[pre-commit](https://pre-commit.com/)** – Git hooks for automated checks
+
+### Setup
+
+Install dev dependencies and pre-commit hooks:
+
+```bash
+uv sync --dev              # Install all dependencies including dev tools
+uv run pre-commit install  # Set up git hooks
+```
+
+### Usage
+
+```bash
+# Format code
+uv run ruff format .
+
+# Lint and auto-fix
+uv run ruff check --fix .
+
+# Type check
+uv run mypy data_gen/ spark_job/
+
+# Run all pre-commit hooks manually
+uv run pre-commit run --all-files
+```
+
+Pre-commit hooks will automatically run on `git commit` to ensure code quality.
+
 ## 🛠️ Make Commands
 
 | Target | Description | When to use |
