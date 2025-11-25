@@ -1,133 +1,102 @@
-# Spark Solr Indexer: Solr Data Pipeline
+# 🚀 Spark Solr Indexer
 
-A complete data pipeline project that generates synthetic data, sets up a local Apache Solr instance, and indexes data using Apache Spark.
+A production-ready data pipeline that generates synthetic data and indexes it into Apache Solr using Apache Spark. Supports both local development and cloud deployment on Google Cloud Platform.
 
-## Features
+## ✨ Features
 
-*   **Data Generation**: Creates realistic dummy data using `Faker`.
-*   **Automated Infrastructure**: Downloads and configures a local Solr Cloud instance.
-*   **Spark Integration**: Uses `spark-solr` to index data efficiently.
+- 🎲 **Synthetic Data Generation** – Create realistic test data with Faker
+- ⚡ **Spark-powered Indexing** – Fast, distributed data processing
+- 🏠 **Local Development** – Quick setup with local Solr and Spark
+- ☁️ **Cloud Deployment** – Full GCP integration with Dataproc and Compute Engine
+- 📊 **Interactive Notebooks** – Step-by-step Jupyter workflows
+- 🛠️ **Make Automation** – One-command pipeline execution
 
-## Prerequisites
+## 📋 Prerequisites
 
-*   **Python 3.8+**
-*   **uv** (Dependency Manager) - [Install uv](https://github.com/astral-sh/uv)
-*   **Java 8/11/17** (Required for Solr and Spark)
-*   **jenv** (Java Version Manager) - [Install jenv](https://www.jenv.be/)
-*   **Apache Spark** (Installed and available in PATH)
-*   **Google Cloud SDK** (`gcloud` CLI) - Required for Notebook GCP integration
+### For Local Development
+- **Python 3.12+**
+- **uv** – [Install](https://github.com/astral-sh/uv)
+- **Java 11 or 17** – For Solr and Spark
+- **Apache Spark** – In your PATH
+- **jenv** (optional) – [Install](https://www.jenv.be/)
 
-## Quick Start
+### For Cloud Deployment
+- **Google Cloud SDK** – `gcloud` CLI
+- **GCP Project** with billing enabled
+- **APIs enabled**: Dataproc, Compute Engine, Cloud Storage
 
-Ensure you have the correct Java version set:
-```bash
-jenv local 17.0
-```
+## 🚀 Quick Start
 
-You can run the entire pipeline (Generate -> Setup Solr -> Index) with a single command. Choose your preferred method:
+### Local Pipeline (Make)
 
-### Option 1: Using Make (Recommended)
+Run the complete pipeline in one command:
+
 ```bash
 make all
 ```
-**Note:** Running `make` without arguments will invoke the `help` target, which lists all available commands.
 
+This will:
+1. Generate synthetic data
+2. Download and start Solr
+3. Index data with Spark
+4. Verify indexing
 
-### Option 2: Using Jupyter Notebooks (Interactive)
+**Other useful commands:**
+```bash
+make help              # See all available commands
+make verify-indexing   # Check if data was indexed
+make stop-solr         # Stop Solr server
+make clean-all         # Reset everything
+```
 
-We provide two notebook options depending on your deployment target:
+### Interactive Notebooks
 
-#### 2a. Local Development Notebook (`pipeline_local.ipynb`)
-Perfect for local development and testing without cloud dependencies.
+Choose your deployment target:
 
-**Prerequisites:**
-- Java 8/11/17 installed
-- Apache Spark installed and in PATH
-- Python 3.12+ with dependencies (`uv sync`)
+#### 🏠 Local Development (`pipeline_local.ipynb`)
 
-**To run:**
+Perfect for local testing without cloud costs.
+
 ```bash
 uv run jupyter notebook notebooks/pipeline_local.ipynb
 ```
 
-**Features:**
-- Uses local Spark (`--master "local[*]"`)
-- Uses local Solr (port 8983)
-- Built-in environment verification
-- Status checks and sample data display
-- No cloud costs
+**What it does:**
+- ✓ Verifies Java/Spark environment
+- ✓ Generates synthetic data
+- ✓ Starts local Solr (port 8983)
+- ✓ Indexes data with local Spark
+- ✓ Runs verification queries
 
-**Workflow:**
-1. Check Java/Spark environment
-2. Generate dummy data locally
-3. Setup local Solr instance
-4. Index data with local Spark
-5. Verify indexing with sample queries
-6. Optional cleanup
+**Requirements:** Java 11/17, Spark in PATH, Python 3.12+
 
-#### 2b. GCP Cloud Notebook (`pipeline_gcp.ipynb`)
-Designed for production-scale cloud deployments using Google Cloud Platform.
+#### ☁️ GCP Cloud (`pipeline_gcp.ipynb`)
 
-**Prerequisites:**
-- Google Cloud SDK (`gcloud`) installed
-- GCP project with billing enabled
-- APIs enabled: Dataproc, Compute Engine, Cloud Storage
-- Appropriate IAM permissions
+Production-scale deployment on Google Cloud Platform.
 
 **Setup:**
-1. Copy the environment template:
-   ```bash
-   cp .env.example .env
-   ```
-2. Edit `.env` and set your GCP project details:
-   ```bash
-   GCP_PROJECT_ID=your-project-id
-   GCP_REGION=us-central1
-   # ... other settings
-   ```
-
-**To run:**
 ```bash
+cp .env.example .env      # Copy template
+# Edit .env with your GCP settings
 uv run jupyter notebook notebooks/pipeline_gcp.ipynb
 ```
 
-**Configuration:**
-The notebook automatically loads settings from `.env` file. You can also override values in the notebook if needed.
+**What it does:**
+- ✓ Authenticates with GCP
+- ✓ Creates Cloud Storage bucket
+- ✓ Provisions Solr VM (Compute Engine)
+- ✓ Creates Dataproc cluster
+- ✓ Uploads and indexes data
+- ✓ Verifies results
+- ⚠️ **Cleanup resources to avoid charges!**
 
-**Features:**
-- Uses **GCP Dataproc** for distributed Spark processing
-- Creates **Compute Engine VM** running Solr
-- Stores data in **Cloud Storage (GCS)**
-- Automated infrastructure provisioning
-- Firewall and networking configuration
-- Complete resource cleanup section
+**Costs:** ~$0.60-1.20/hour when running (Dataproc + VM + Storage)
 
-**Workflow:**
-1. Authenticate with GCP
-2. Create GCS bucket
-3. Generate and upload data to GCS
-4. Create Solr VM on Compute Engine
-5. Create Dataproc cluster
-6. Submit Spark job to Dataproc
-7. Verify indexing on cloud Solr
-8. Cleanup resources (important!)
+**Configuration:** Edit `.env` file with your GCP project ID, region, and preferences. The notebook loads settings automatically.
 
-**Cost Estimation:**
-- Dataproc Cluster: ~$0.50-1.00/hour
-- Solr VM: ~$0.10-0.20/hour
-- Storage: ~$0.02/GB/month
-- Network: Variable
 
-⚠️ **Important:** Remember to run the cleanup section in the notebook to avoid ongoing charges!
 
-### 5. Cleanup
-Stops Solr and removes the entire `data` directory (all generated data).
-```bash
-make stop-solr
-make clean
-```
-
-## Make Targets Reference
+## 🛠️ Make Commands
 
 | Target | Description | When to use |
 |--------|-------------|-------------|
@@ -143,81 +112,57 @@ make clean
 | `make clean-all` | Removes data, Solr, and cache. | To completely reset the project state. |
 | `make help` | Lists available targets. | When you need a quick reminder of commands. |
 
-## Configuration Files
+## ⚙️ Configuration
 
-### Environment Variables (GCP Notebook)
+### Environment Variables (.env)
 
-The GCP notebook uses environment variables for configuration management:
+For GCP deployments, configure your settings in `.env`:
 
-- **`.env.example`** - Template file with placeholder values (committed to git)
-  - Contains all required configuration variables with example values
-  - Safe to commit and share with collaborators
-
-- **`.env`** - Your personal configuration file (gitignored)
-  - Copy from `.env.example`: `cp .env.example .env`
-  - Edit with your actual GCP project settings
-  - **Never commit this file** - it contains your project-specific values
-  - Automatically loaded by the GCP notebook using `python-dotenv`
-
-**Configuration Variables:**
 ```bash
-GCP_PROJECT_ID=your-project-id          # Your GCP project ID
-GCP_REGION=us-central1                  # Preferred GCP region
-GCP_ZONE=us-central1-a                  # Specific zone for VMs
-GCS_BUCKET_NAME=your-bucket-name        # Cloud Storage bucket
-DATAPROC_CLUSTER_NAME=spark-solr-cluster # Dataproc cluster name
-DATAPROC_WORKER_COUNT=2                 # Number of worker nodes
-SOLR_VM_NAME=solr-instance              # Solr VM name
-# ... and more (see .env.example)
+cp .env.example .env    # Copy template
+# Edit .env with your settings
 ```
 
-**Quick Setup:**
-```bash
-# 1. Copy the template
-cp .env.example .env
+**Key variables:**
+- `GCP_PROJECT_ID` – Your GCP project
+- `GCP_REGION` – Deployment region (e.g., us-central1)
+- `GCS_BUCKET_NAME` – Cloud Storage bucket
+- `DATAPROC_WORKER_COUNT` – Number of Spark workers
+- `SOLR_VM_NAME` – Solr VM instance name
 
-# 2. Edit with your settings
-nano .env  # or use your preferred editor
+💡 See `.env.example` for all available options.
 
-# 3. Run the notebook
-uv run jupyter notebook notebooks/pipeline_gcp.ipynb
+⚠️ **Never commit `.env`** – it's gitignored and contains your credentials.
+
+## 📁 Project Structure
+
+```
+spark-solr-indexer/
+├── data_gen/          # Synthetic data generation
+├── spark_job/         # PySpark indexing jobs
+├── scripts/           # Solr management scripts
+├── notebooks/         # Jupyter workflows
+│   ├── pipeline_local.ipynb   # Local development
+│   └── pipeline_gcp.ipynb     # Cloud deployment
+├── .env.example       # GCP configuration template
+├── Makefile          # Task automation
+└── pyproject.toml    # Python dependencies
 ```
 
-The notebook will automatically load your configuration on startup.
-
-## Project Structure
-
-*   `data_gen/`: Python scripts for generating synthetic JSON data.
-*   `spark_job/`: PySpark jobs for data processing.
-*   `scripts/`: Shell scripts for Solr management and verification.
-*   `notebooks/`: Jupyter notebooks for interactive pipeline execution.
-*   `.env.example`: Template configuration file for GCP deployments.
-*   `Makefile`: Main task runner configuration.
-
-## Performance Optimization
+## ⚡ Performance
 
 ### Dependency Caching
 
-The Spark job uses the `spark-solr` connector along with ~240 transitive dependencies from Maven Central. To avoid re-downloading these JARs on every run, the project is configured to cache them in `~/.ivy2/`.
+Spark downloads ~240 dependencies from Maven Central on first run.
 
-**First Run:**
-- **Expect 2-5 minutes** for Spark to resolve and download all dependencies
-- You'll see many `found <artifact> in central` messages
-- JARs are saved to `~/.ivy2/cache/` and `~/.ivy2/jars/`
+**First run:** 2-5 minutes (downloads and caches JARs to `~/.ivy2/`)
 
-**Subsequent Runs:**
-- **Near-instant startup** – Spark uses the locally cached JARs
-- Only a quick resolution check happens (no downloads)
+**Subsequent runs:** Near-instant (uses cached JARs)
 
-**Optional: Pre-cache dependencies**
-
-To download everything ahead of time without running the full job:
-
+**Optional pre-caching:**
 ```bash
-./scripts/cache_dependencies.sh
+./scripts/cache_dependencies.sh  # Download dependencies ahead of time
 ```
-
-This one-time script populates your Ivy cache, making your first real `make index` run much faster.
 
 ## License
 
