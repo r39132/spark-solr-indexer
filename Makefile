@@ -1,4 +1,4 @@
-.PHONY: all gen-data setup-solr index stop-solr clean verify-indexing-worked help restart-solr check-env clean-all format lint lint-fix typecheck qa
+.PHONY: all gen-data setup-solr index stop-solr clean verify-indexing-worked help restart-solr check-env clean-all format lint lint-fix typecheck qa precommit
 .DEFAULT_GOAL := help
 # Run the full pipeline: Generate data -> Setup Solr -> Index
 all: gen-data setup-solr index
@@ -78,6 +78,10 @@ typecheck:
 qa: lint typecheck
 	@echo "✓ All quality checks passed"
 
+# Run all pre-commit hooks
+precommit:
+	uv run pre-commit run --all-files
+
 # List all available targets
 help:
 	@echo "Available targets:"
@@ -98,3 +102,4 @@ help:
 	@echo "  lint-fix              : Lint and auto-fix issues"
 	@echo "  typecheck             : Type check with mypy"
 	@echo "  qa                    : Run all quality checks"
+	@echo "  precommit             : Run all pre-commit hooks"

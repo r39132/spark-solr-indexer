@@ -133,19 +133,31 @@ Pre-commit hooks will automatically run on `git commit` to ensure code quality.
 
 ## 🛠️ Make Commands
 
-| Target | Description | When to use |
-|--------|-------------|-------------|
-| `make all` | Runs `gen-data`, `setup-solr`, and `index`. | To run the full pipeline in one go. |
-| `make gen-data` | Generates dummy JSON data. | When you need fresh test data. |
-| `make setup-solr` | Downloads and starts Solr. | To start the Solr server. |
-| `make index` | Runs the Spark indexing job. | To index data into Solr. |
-| `make verify-indexing-worked` | Queries Solr for document counts. | To confirm indexing succeeded. |
-| `make stop-solr` | Stops the Solr server. | When finished working. |
-| `make restart-solr` | Stops and starts Solr. | If Solr becomes unresponsive. |
-| `make check-env` | Verifies Java/Python versions. | Before running the pipeline to check prerequisites. |
-| `make clean` | Removes generated data. | To clear old data files. |
-| `make clean-all` | Removes data, Solr, and cache. | To completely reset the project state. |
-| `make help` | Lists available targets. | When you need a quick reminder of commands. |
+### Pipeline Commands
+
+| Target | Description |
+|--------|-------------|
+| `make all` | Run full pipeline (gen-data → setup-solr → index) |
+| `make gen-data` | Generate dummy JSON data |
+| `make setup-solr` | Download and start Solr |
+| `make index` | Run Spark indexing job |
+| `make verify-indexing-worked` | Verify documents in Solr |
+| `make stop-solr` | Stop Solr server |
+| `make restart-solr` | Restart Solr |
+| `make check-env` | Verify Java 17 and Python 3.8+ |
+| `make clean` | Remove generated data |
+| `make clean-all` | Remove data, Solr, and Ivy cache |
+
+### Code Quality Commands
+
+| Target | Description |
+|--------|-------------|
+| `make format` | Format code with Ruff |
+| `make lint` | Lint code with Ruff |
+| `make lint-fix` | Lint and auto-fix issues |
+| `make typecheck` | Type check with mypy |
+| `make qa` | Run all quality checks (lint + typecheck) |
+| `make precommit` | Run all pre-commit hooks |
 
 ## ⚙️ Configuration
 
